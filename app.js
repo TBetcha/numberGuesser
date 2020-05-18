@@ -13,7 +13,7 @@
 //game values
 let min = 1,
 	max = 10,
-	winningNum = 2,
+	winningNum = getRandomNumber(min, max),
 	guessesLeft = 3;
 
 //UI elements
@@ -88,6 +88,11 @@ function gameOver(won, msg) {
 	//since the class was added after page loads we need to use
 	//event delegation and put listener on a parent
 	UIguessBtn.className += 'play-again';
+}
+
+//get winning number
+function getRandomNumber(min, max) {
+	return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
 function setMessage(msg, color) {
