@@ -29,6 +29,14 @@ UImessage = document.querySelector('.message');
 UIminNum.textContent = min;
 UImaxNum.textContent = max;
 
+//play again event listener
+//click wont work here way too fast use mouse down
+UIgame.addEventListener('mousedown', function (e) {
+	if (e.target.className === 'play-again') {
+		window.location.reload();
+	}
+	console.log(1);
+});
 //listen for guess
 UIguessBtn.addEventListener('click', function () {
 	let guess = parseInt(UIguessInput.value);
@@ -74,6 +82,12 @@ function gameOver(won, msg) {
 	UImessage.style.color = color;
 	//set message for win
 	setMessage(msg);
+
+	//play again?
+	UIguessBtn.value = 'Play Again';
+	//since the class was added after page loads we need to use
+	//event delegation and put listener on a parent
+	UIguessBtn.className += 'play-again';
 }
 
 function setMessage(msg, color) {
